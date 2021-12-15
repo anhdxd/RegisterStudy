@@ -27,12 +27,16 @@ with requests.Session() as s:
     response = s.post(url,data = Data_Login)
     print(f'Login: {response.status_code}')
     print(f'Login: {response.history}')
-    with open('Login.html', 'wb') as fd:
-        fd.write(response.text.encode())
+    #with open('Login.html', 'wb+') as fd:
+    #    fd.write(response.text.encode())
+    soup = BeautifulSoup(response.text.encode(), 'lxml')
+    #VIEWSTATE = soup.find(id="__VIEWSTATE").get("value"))
+    VIEWSTATE = soup.find(id="__VIEWSTATE").get("value")
+    DataRegis.Data_ATM["__VIEWSTATE"]= VIEWSTATE
     response = s.post(url="http://qldt.actvn.edu.vn/CMCSoft.IU.Web.Info/StudyRegister/StudyRegister.aspx",data = DataRegis.Data_ATM)
-    print(f'0.ATM: {response.status_code}')
+    print(f'0.ATM: {response.history}')
     # response = s.post(url="http://qldt.actvn.edu.vn/CMCSoft.IU.Web.Info/StudyRegister/StudyRegister.aspx",data = DataRegis.Data_CDCS)
-    # print(f'1. CDCS: {response.status_code}')
+    # print(f'1. CDCS: {response.history}')
     # response = s.post(url="http://qldt.actvn.edu.vn/CMCSoft.IU.Web.Info/StudyRegister/StudyRegister.aspx",data = DataRegis.Data_KTMT)
     # print(f'2. KTMT: {response.status_code}')
     # response = s.post(url="http://qldt.actvn.edu.vn/CMCSoft.IU.Web.Info/StudyRegister/StudyRegister.aspx",data = DataRegis.Data_KTLT)
