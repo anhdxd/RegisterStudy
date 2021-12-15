@@ -4,7 +4,7 @@ from bs4.element import Tag
 import requests
 from bs4 import BeautifulSoup
 import DataRegis
-user = ["AT160104","asd","asdd"]
+
 Data_Login ={
     "_EVENTTARGET":"",
     "__EVENTARGUMENT:":"",
@@ -14,7 +14,7 @@ Data_Login ={
     "PageHeader1$drpNgonNgu":"E43296C6F24C4410A894F46D57D2D3AB",
     "PageHeader1$hidisNotify":"0",
     "PageHeader1$hidValueNotify":".",   
-    "txtUserName":user[0],
+    "txtUserName":"AT160104",
     "txtPassword":"c30da15801bffa50160bc1743df35dca",#Buộc phải mã hóa 
     "btnSubmit":"",
     "hidUserId":"",
@@ -26,6 +26,7 @@ url = "http://qldt.actvn.edu.vn/CMCSoft.IU.Web.Info/Login.aspx"
 with requests.Session() as s:
     response = s.post(url,data = Data_Login)
     print(f'Login: {response.status_code}')
+    print(f'Login: {response.history}')
     with open('Login.html', 'wb') as fd:
         fd.write(response.text.encode())
     response = s.post(url="http://qldt.actvn.edu.vn/CMCSoft.IU.Web.Info/StudyRegister/StudyRegister.aspx",data = DataRegis.Data_ATM)
