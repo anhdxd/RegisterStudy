@@ -3,7 +3,6 @@ from bs4.element import Tag
 
 import requests
 from bs4 import BeautifulSoup
-
 import DataRegis
 user = ["AT160104","asd","asdd"]
 Data_Login ={
