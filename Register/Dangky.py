@@ -30,29 +30,35 @@ with requests.Session() as s:
     #with open('Login.html', 'wb+') as fd:
     #    fd.write(response.text.encode())
     soup = BeautifulSoup(response.text.encode(), 'lxml')
-    #VIEWSTATE = soup.find(id="__VIEWSTATE").get("value"))
     VIEWSTATE = soup.find(id="__VIEWSTATE").get("value")
     DataRegis.Data_ATM["__VIEWSTATE"]= VIEWSTATE
+    DataRegis.Data_CDCS["__VIEWSTATE"]=VIEWSTATE
+    DataRegis.Data_KTMT["__VIEWSTATE"]=VIEWSTATE
+    DataRegis.Data_KTLT["__VIEWSTATE"]=VIEWSTATE
+    DataRegis.Data_LINUX["__VIEWSTATE"]=VIEWSTATE
+    DataRegis.Data_HDH["__VIEWSTATE"]=VIEWSTATE
+    DataRegis.Data_HTTT["__VIEWSTATE"]=VIEWSTATE
+    DataRegis.Data_ENG4["__VIEWSTATE"]=VIEWSTATE
+
     response = s.post(url="http://qldt.actvn.edu.vn/CMCSoft.IU.Web.Info/StudyRegister/StudyRegister.aspx",data = DataRegis.Data_ATM)
     print(f'0.ATM: {response.history}')
-    # response = s.post(url="http://qldt.actvn.edu.vn/CMCSoft.IU.Web.Info/StudyRegister/StudyRegister.aspx",data = DataRegis.Data_CDCS)
-    # print(f'1. CDCS: {response.history}')
-    # response = s.post(url="http://qldt.actvn.edu.vn/CMCSoft.IU.Web.Info/StudyRegister/StudyRegister.aspx",data = DataRegis.Data_KTMT)
-    # print(f'2. KTMT: {response.status_code}')
-    # response = s.post(url="http://qldt.actvn.edu.vn/CMCSoft.IU.Web.Info/StudyRegister/StudyRegister.aspx",data = DataRegis.Data_KTLT)
-    # print(f'3. KTLT: {response.status_code}')
-    # response = s.post(url="http://qldt.actvn.edu.vn/CMCSoft.IU.Web.Info/StudyRegister/StudyRegister.aspx",data = DataRegis.Data_LINUX)
-    # print(f'4. LINUX: {response.status_code}')
-    # response = s.post(url="http://qldt.actvn.edu.vn/CMCSoft.IU.Web.Info/StudyRegister/StudyRegister.aspx",data = DataRegis.Data_HDH)
-    # print(f'5. HDH: {response.status_code}')
-    # response = s.post(url="http://qldt.actvn.edu.vn/CMCSoft.IU.Web.Info/StudyRegister/StudyRegister.aspx",data = DataRegis.Data_HTTT)
-    # print(f'6. HTTT: {response.status_code}')
-    # response = s.post(url="http://qldt.actvn.edu.vn/CMCSoft.IU.Web.Info/StudyRegister/StudyRegister.aspx",data = DataRegis.Data_ENG4)
-    # print(f'7. ENG4: {response.status_code}')
+    response = s.post(url="http://qldt.actvn.edu.vn/CMCSoft.IU.Web.Info/StudyRegister/StudyRegister.aspx",data = DataRegis.Data_CDCS)
+    print(f'1. CDCS: {response.history}')
+    response = s.post(url="http://qldt.actvn.edu.vn/CMCSoft.IU.Web.Info/StudyRegister/StudyRegister.aspx",data = DataRegis.Data_KTMT)
+    print(f'2. KTMT: {response.history}')
+    response = s.post(url="http://qldt.actvn.edu.vn/CMCSoft.IU.Web.Info/StudyRegister/StudyRegister.aspx",data = DataRegis.Data_KTLT)
+    print(f'3. KTLT: {response.history}')
+    response = s.post(url="http://qldt.actvn.edu.vn/CMCSoft.IU.Web.Info/StudyRegister/StudyRegister.aspx",data = DataRegis.Data_LINUX)
+    print(f'4. LINUX: {response.history}')
+    response = s.post(url="http://qldt.actvn.edu.vn/CMCSoft.IU.Web.Info/StudyRegister/StudyRegister.aspx",data = DataRegis.Data_HDH)
+    print(f'5. HDH: {response.history}')
+    response = s.post(url="http://qldt.actvn.edu.vn/CMCSoft.IU.Web.Info/StudyRegister/StudyRegister.aspx",data = DataRegis.Data_HTTT)
+    print(f'6. HTTT: {response.history}')
+    response = s.post(url="http://qldt.actvn.edu.vn/CMCSoft.IU.Web.Info/StudyRegister/StudyRegister.aspx",data = DataRegis.Data_ENG4)
+    print(f'7. ENG4: {response.history}')
+
     with open('Dangky.html', 'wb') as fd:
             fd.write(response.text.encode())
-    
-
     # gets = s.get("http://qldt.actvn.edu.vn/CMCSoft.IU.Web.info/StudyRegister/StudyRegister.aspx")
     # with open('Dangky.html', 'wb') as fd:
     #        fd.write(gets.text.encode())
