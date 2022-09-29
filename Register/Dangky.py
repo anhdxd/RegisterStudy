@@ -14,8 +14,8 @@ Data_Login ={
     "PageHeader1$drpNgonNgu":"E43296C6F24C4410A894F46D57D2D3AB",
     "PageHeader1$hidisNotify":"0",
     "PageHeader1$hidValueNotify":".",   
-    "txtUserName":"AT160104",
-    "txtPassword":"c30da15801bffa50160bc1743df35dca",#Buộc phải mã hóa 
+    "txtUserName":"AT160100",
+    "txtPassword":"c30da15801bffab0160bc1743df45dca",#Buộc phải mã hóa md5
     "btnSubmit":"",
     "hidUserId":"",
     "hidUserFullName":"",
